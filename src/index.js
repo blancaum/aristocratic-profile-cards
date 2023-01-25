@@ -20,7 +20,9 @@ let savedCards = db.collection('savedCards');
 const getCardById = async function (id) {
   // get an item at key id from collection
   let item = await savedCards.get(id);
-  console.dir('Item found: ' + item);
+  console.dir('Item found (dir): ' + item);
+  console.log('Item found (log): ' + item);
+  console.log(...item);
   return item;
 };
 
