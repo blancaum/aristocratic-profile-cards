@@ -29,7 +29,7 @@ const renderCardById = async function (id, res) {
   // get an item at key id from collection
   let userCard = await savedCards.get(id);
 
-  console.log('Item found (JSON stringify): ' + JSON.stringify(item));
+  console.log('Item found (JSON stringify): ' + JSON.stringify(userCard));
 
   const salaryText = () => {
     if (userCard.props.salary === '1') {
