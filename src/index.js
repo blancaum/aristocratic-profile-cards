@@ -69,7 +69,7 @@ server.post('/card', (req, res) => {
     //   req.body.additionalInfo
     // );
 
-    const id = uuid();
+    const id = uuidv4();
 
     insertCard(id, req.body);
 
