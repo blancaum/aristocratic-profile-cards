@@ -51,7 +51,7 @@ server.post('/card', (req, res) => {
     const responseSuccess = {
       success: true,
       //cambiamos la url de localhost a Railway y le ponemos el ID que devuelve el INSERT
-      cardURL: `https://project-promo-r-module-4-team-4-production.up.railway.app/card/${result.lastInsertRowid}`,
+      cardURL: `https://63d0d9e2d1750e274720cc4b--mellow-blini-8b8e58.netlify.app/card/${result.lastInsertRowid}`,
     };
     res.json(responseSuccess);
   } else {

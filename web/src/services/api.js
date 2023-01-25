@@ -1,6 +1,6 @@
 const callToApi = (data) => {
   return fetch(
-    'https://project-promo-r-module-4-team-4-production.up.railway.app/card',
+    'https://63d0d9e2d1750e274720cc4b--mellow-blini-8b8e58.netlify.app/card',
     {
       method: 'POST',
       body: JSON.stringify(data),
