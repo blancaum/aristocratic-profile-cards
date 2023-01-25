@@ -17,12 +17,59 @@ const db = CyclicDb('fair-blue-dog-veilCyclicDB');
 
 let savedCards = db.collection('savedCards');
 
-const getCardById = async function (id) {
+// const getCardById = async function (id) {
+//   // get an item at key id from collection
+//   let item = await savedCards.get(id);
+
+//   console.log('Item found (JSON stringify): ' + JSON.stringify(item));
+//   return item;
+// };
+
+const renderCardById = async function (id, res) {
   // get an item at key id from collection
-  let item = await savedCards.get(id);
+  let userCard = await savedCards.get(id);
 
   console.log('Item found (JSON stringify): ' + JSON.stringify(item));
-  return item;
+
+  const salaryText = () => {
+    if (userCard.props.salary === '1') {
+      return '30.000-40.000';
+    } else if (userCard.props.salary === '2') {
+      return '40.000-50.000';
+    } else {
+      return '>=50.000';
+    }
+  };
+
+  let openToWorkIcon = 'fa-lock-open';
+
+  if (userCard.props.openToWork === 0) {
+    openToWorkIcon = 'fa-lock';
+  } else {
+    openToWorkIcon = 'fa-lock-open';
+  }
+
+  const userCardFinal = {
+    palette: userCard.props.palette,
+    name: userCard.props.name,
+    job: userCard.props.job,
+    phone: userCard.props.phone,
+    email: userCard.props.email,
+    linkedin: userCard.props.linkedin,
+    github: userCard.props.github,
+    photo: userCard.props.photo,
+    salary: salaryText(),
+    openToWork: openToWorkIcon,
+    additionalInfo: userCard.props.additionalInfo,
+  };
+
+  console.log(userCardFinal);
+  console.dir(userCardFinal);
+
+  //pinto el template de tarjetas con mis datos personalizados (del id de la url)
+  res.render('cardTemplate', userCardFinal);
+
+  return userCardFinal;
 };
 
 const insertCard = async function (id, cardData) {
@@ -109,49 +156,8 @@ server.get('/card/:id', (req, res) => {
   //ejecuto la query y me devuelve los datos de la tarjeta que correspondan con el id de la url
   //const userCard = query.get(id);
 
-  const userCard = getCardById(id);
-  console.log('User Card (JSON stringify): ' + JSON.stringify(userCard));
-
-  const salaryText = () => {
-    if (userCard.salary === '1') {
-      return '30.000-40.000';
-    } else if (userCard.salary === '2') {
-      return '40.000-50.000';
-    } else {
-      return '>=50.000';
-    }
-  };
-
-  let openToWorkIcon = 'fa-lock-open';
-
-  if (userCard.openToWork === 0) {
-    openToWorkIcon = 'fa-lock';
-  } else {
-    openToWorkIcon = 'fa-lock-open';
-  }
-
-  // const openToWorkIcon =
-  //   userCard.openToWork === '1' ? 'fa-lock-open' : 'fa-lock';
-
-  const userCardFinal = {
-    palette: userCard.palette,
-    name: userCard.name,
-    job: userCard.job,
-    phone: userCard.phone,
-    email: userCard.email,
-    linkedin: userCard.linkedin,
-    github: userCard.github,
-    photo: userCard.photo,
-    salary: salaryText(),
-    openToWork: openToWorkIcon,
-    additionalInfo: userCard.additionalInfo,
-  };
-
-  console.log(userCardFinal);
-  console.dir(userCardFinal);
-
-  //pinto el template de tarjetas con mis datos personalizados (del id de la url)
-  res.render('cardTemplate', userCardFinal);
+  const userCard = renderCardById(id, res);
+  console.log('User Card Final (JSON stringify): ' + JSON.stringify(userCard));
 });
 
 const staticServer = './src/public-react';
