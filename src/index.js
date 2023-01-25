@@ -71,7 +71,21 @@ server.post('/card', (req, res) => {
 
     const id = uuidv4();
 
-    insertCard(id, req.body);
+    const cardData = {
+      palette: req.body.palette,
+      name: req.body.name,
+      email: req.body.email,
+      photo: req.body.photo,
+      phone: req.body.phone,
+      linkedin: req.body.linkedin,
+      github: req.body.github,
+      job: req.body.job,
+      salary: req.body.salary,
+      openToWork: req.body.openToWork,
+      additionalInfo: req.body.additionalInfo,
+    };
+
+    insertCard(id, cardData);
 
     const responseSuccess = {
       success: true,
