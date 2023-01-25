@@ -1,6 +1,6 @@
 # LAS DUQUESAS
 
-¡Hola! Este es nuestro proyecto grupal final del Bootcamp de Adalab. En él hemos desarrollado tanto el front end como el back end y por tanto utilizamos Netlify para poder publicarlo y que tenga su propia URL.
+¡Hola! Este es nuestro proyecto grupal final del Bootcamp de Adalab. En él hemos desarrollado tanto el front end como el back end y por tanto utilizamos Cyclic.sh para poder publicarlo y que tenga su propia URL.
 
 ### El equipo:
 
@@ -8,7 +8,7 @@
 - Blanca Ubis: [@blancaum](https://github.com/blancaum)
 - Alejandra Ameliach: [@Ameliach9](https://github.com/Ameliach9)
 
-Url del proyecto final: https://mellow-blini-8b8e58.netlify.app/
+Url del proyecto final: https://fair-blue-dog-veil.cyclic.app
 
 ## Descripción
 

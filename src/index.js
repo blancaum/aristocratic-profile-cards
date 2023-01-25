@@ -50,8 +50,8 @@ server.post('/card', (req, res) => {
     );
     const responseSuccess = {
       success: true,
-      //cambiamos la url de localhost a Netlify y le ponemos el ID que devuelve el INSERT
-      cardURL: `https://mellow-blini-8b8e58.netlify.app/card/${result.lastInsertRowid}`,
+      //cambiamos la url de localhost a Cyclic.sh y le ponemos el ID que devuelve el INSERT
+      cardURL: `https://fair-blue-dog-veil.cyclic.app/card/${result.lastInsertRowid}`,
     };
     res.json(responseSuccess);
   } else {

@@ -1,5 +1,5 @@
 const callToApi = (data) => {
-  return fetch('https://mellow-blini-8b8e58.netlify.app/card', {
+  return fetch('https://fair-blue-dog-veil.cyclic.app/card', {
     method: 'POST',
     body: JSON.stringify(data),
     headers: {
