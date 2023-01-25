@@ -109,12 +109,16 @@ server.get('/card/:id', (req, res) => {
   //const query = db.prepare('SELECT * FROM userCards WHERE id = ?');
   //ejecuto la query y me devuelve los datos de la tarjeta que correspondan con el id de la url
   //const userCard = query.get(id);
+
   const userCard = getCardById(id);
-  console.log(userCard);
+  //console.log(userCard);
+  console.log('Props: ' + userCard.props.name);
+  console.log('Original: ' + userCard.name);
+
   const salaryText = () => {
-    if (userCard.salary === '1') {
+    if (userCard.props.salary === '1') {
       return '30.000-40.000';
-    } else if (userCard.salary === '2') {
+    } else if (userCard.props.salary === '2') {
       return '40.000-50.000';
     } else {
       return '>=50.000';
@@ -123,7 +127,7 @@ server.get('/card/:id', (req, res) => {
 
   let openToWorkIcon = 'fa-lock-open';
 
-  if (userCard.openToWork === 0) {
+  if (userCard.props.openToWork === 0) {
     openToWorkIcon = 'fa-lock';
   } else {
     openToWorkIcon = 'fa-lock-open';
@@ -133,17 +137,17 @@ server.get('/card/:id', (req, res) => {
   //   userCard.openToWork === '1' ? 'fa-lock-open' : 'fa-lock';
 
   const userCardFinal = {
-    palette: userCard.palette,
-    name: userCard.name,
-    job: userCard.job,
-    phone: userCard.phone,
-    email: userCard.email,
-    linkedin: userCard.linkedin,
-    github: userCard.github,
-    photo: userCard.photo,
+    palette: userCard.props.palette,
+    name: userCard.props.name,
+    job: userCard.props.job,
+    phone: userCard.props.phone,
+    email: userCard.props.email,
+    linkedin: userCard.props.linkedin,
+    github: userCard.props.github,
+    photo: userCard.props.photo,
     salary: salaryText(),
     openToWork: openToWorkIcon,
-    additionalInfo: userCard.additionalInfo,
+    additionalInfo: userCard.props.additionalInfo,
   };
   //pinto el template de tarjetas con mis datos personalizados (del id de la url)
   res.render('cardTemplate', userCardFinal);
