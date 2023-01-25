@@ -24,8 +24,7 @@ Además, una vez creada la tarjeta, puedes compartirla en Twitter (opción por d
 - Node JS
 - Nodemon
 - Express JS
-- SQL
-- SQLite Browser
+- DynamoDB - NoSQL
 - Ejs
 
 ## Cómo arrancar este proyecto en tu ordenador
@@ -64,4 +63,4 @@ En la raíz del proyecto:
 
 ### Gracias por visitarnos!
 
-Cualquier feedback es bienvenido. Somos junior y queremos seguir creciendo en este mundo
+Cualquier feedback es bienvenido. Somos junior y queremos seguir creciendo en este mundo.
