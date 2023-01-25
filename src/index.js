@@ -20,9 +20,7 @@ let savedCards = db.collection('savedCards');
 const getCardById = async function (id) {
   // get an item at key id from collection
   let item = await savedCards.get(id);
-  console.dir('Item found (dir): ' + item);
-  console.log('Item found (log): ' + item);
-  console.table('Item found (table): ' + item);
+
   console.log('Item found (JSON stringify): ' + JSON.stringify(item));
   return item;
 };
@@ -112,7 +110,7 @@ server.get('/card/:id', (req, res) => {
   //const userCard = query.get(id);
 
   const userCard = getCardById(id);
-  //console.dir(userCard);
+  console.log('User Card (JSON stringify): ' + JSON.stringify(userCard));
 
   const salaryText = () => {
     if (userCard.salary === '1') {
