@@ -1,14 +1,11 @@
 const callToApi = (data) => {
-  return fetch(
-    'https://63d0d9e2d1750e274720cc4b--mellow-blini-8b8e58.netlify.app/card',
-    {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    }
-  )
+  return fetch('https://mellow-blini-8b8e58.netlify.app/card', {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
     .then((response) => response.json())
 
     .then((response) => {

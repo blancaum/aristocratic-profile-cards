@@ -50,8 +50,8 @@ server.post('/card', (req, res) => {
     );
     const responseSuccess = {
       success: true,
-      //cambiamos la url de localhost a Railway y le ponemos el ID que devuelve el INSERT
-      cardURL: `https://63d0d9e2d1750e274720cc4b--mellow-blini-8b8e58.netlify.app/card/${result.lastInsertRowid}`,
+      //cambiamos la url de localhost a Netlify y le ponemos el ID que devuelve el INSERT
+      cardURL: `https://mellow-blini-8b8e58.netlify.app/card/${result.lastInsertRowid}`,
     };
     res.json(responseSuccess);
   } else {

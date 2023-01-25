@@ -8,7 +8,7 @@
 - Blanca Ubis: [@blancaum](https://github.com/blancaum)
 - Alejandra Ameliach: [@Ameliach9](https://github.com/Ameliach9)
 
-Url del proyecto final: https://63d0d9e2d1750e274720cc4b--mellow-blini-8b8e58.netlify.app/
+Url del proyecto final: https://mellow-blini-8b8e58.netlify.app/
 
 ## Descripción
 
