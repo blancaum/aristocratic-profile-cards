@@ -22,7 +22,8 @@ const getCardById = async function (id) {
   let item = await savedCards.get(id);
   console.dir('Item found (dir): ' + item);
   console.log('Item found (log): ' + item);
-  console.log(...item);
+  console.table('Item found (table): ' + item);
+  console.log('Item found (JSON stringify): ' + JSON.stringify(item));
   return item;
 };
 
