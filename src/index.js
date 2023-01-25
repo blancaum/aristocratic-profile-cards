@@ -1,10 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const { v4: uuidv4 } = require('uuid');
-//const Database = require('better-sqlite3');
 const CyclicDb = require('@cyclic.sh/dynamodb');
-
-//const savedCards = [];
 
 const server = express();
 
@@ -12,24 +9,13 @@ server.use(cors());
 server.use(express.json({ limit: '25mb' }));
 server.set('view engine', 'ejs');
 
-//const db = new Database('./src/db/cards.db', { verbose: console.log });
 const db = CyclicDb('fair-blue-dog-veilCyclicDB');
 
 let savedCards = db.collection('savedCards');
 
-// const getCardById = async function (id) {
-//   // get an item at key id from collection
-//   let item = await savedCards.get(id);
-
-//   console.log('Item found (JSON stringify): ' + JSON.stringify(item));
-//   return item;
-// };
-
 const renderCardById = async function (id, res) {
   // get an item at key id from collection
   let userCard = await savedCards.get(id);
-
-  console.log('Item found (JSON stringify): ' + JSON.stringify(userCard));
 
   const salaryText = () => {
     if (userCard.props.salary === '1') {
@@ -63,9 +49,6 @@ const renderCardById = async function (id, res) {
     additionalInfo: userCard.props.additionalInfo,
   };
 
-  console.log(userCardFinal);
-  console.dir(userCardFinal);
-
   //pinto el template de tarjetas con mis datos personalizados (del id de la url)
   res.render('cardTemplate', userCardFinal);
 
@@ -98,23 +81,6 @@ server.post('/card', (req, res) => {
   }
 
   if (success === true) {
-    // const insertStmt = db.prepare(
-    //   'INSERT INTO userCards (palette,name,email,photo,phone,linkedin,github,job,salary,openToWork,additionalInfo) VALUES (?,?,?,?,?,?,?,?,?,?,?)'
-    // );
-    // const result = insertStmt.run(
-    //   req.body.palette,
-    //   req.body.name,
-    //   req.body.email,
-    //   req.body.photo,
-    //   req.body.phone,
-    //   req.body.linkedin,
-    //   req.body.github,
-    //   req.body.job,
-    //   req.body.salary,
-    //   req.body.openToWork,
-    //   req.body.additionalInfo
-    // );
-
     const id = uuidv4();
 
     const cardData = {
@@ -151,10 +117,6 @@ server.post('/card', (req, res) => {
 server.get('/card/:id', (req, res) => {
   //guardamos el parámetro id de la url
   const id = req.params.id;
-  //creamos la query
-  //const query = db.prepare('SELECT * FROM userCards WHERE id = ?');
-  //ejecuto la query y me devuelve los datos de la tarjeta que correspondan con el id de la url
-  //const userCard = query.get(id);
 
   const userCard = renderCardById(id, res);
   console.log('User Card Final (JSON stringify): ' + JSON.stringify(userCard));
