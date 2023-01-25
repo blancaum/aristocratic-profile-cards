@@ -110,7 +110,7 @@ server.get('/card/:id', (req, res) => {
   //ejecuto la query y me devuelve los datos de la tarjeta que correspondan con el id de la url
   //const userCard = query.get(id);
   const userCard = getCardById(id);
-  //console.log(userCard);
+  console.dir(userCard);
 
   const salaryText = () => {
     if (userCard.salary === '1') {
