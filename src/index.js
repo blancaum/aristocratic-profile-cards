@@ -18,11 +18,9 @@ const db = CyclicDb('fair-blue-dog-veilCyclicDB');
 let savedCards = db.collection('savedCards');
 
 const getCardById = async function (id) {
-  // create an item in collection with key id
-  // let cardId = await savedCards.set(id, result);
-
   // get an item at key id from collection
   let item = await savedCards.get(id);
+  console.dir('Item found: ' + item);
   return item;
 };
 
@@ -109,8 +107,9 @@ server.get('/card/:id', (req, res) => {
   //const query = db.prepare('SELECT * FROM userCards WHERE id = ?');
   //ejecuto la query y me devuelve los datos de la tarjeta que correspondan con el id de la url
   //const userCard = query.get(id);
+
   const userCard = getCardById(id);
-  console.dir(userCard);
+  //console.dir(userCard);
 
   const salaryText = () => {
     if (userCard.salary === '1') {
