@@ -112,7 +112,6 @@ server.get('/card/:id', (req, res) => {
 
   const userCard = getCardById(id);
   //console.log(userCard);
-  console.log('Props: ' + userCard.props.name);
   console.log('Original: ' + userCard.name);
 
   const salaryText = () => {
